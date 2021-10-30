@@ -62,4 +62,8 @@ public class Store {
     public Collection<Candidate> findAllCandidates() {
         return candidates.values();
     }
+
+    public void delete(int id) {
+        candidates.remove(id);
+    }
 }

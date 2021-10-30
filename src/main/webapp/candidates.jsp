@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <!doctype html>
 <html lang="en">
@@ -20,7 +21,6 @@
 </head>
 <body>
 <div class="container pt-3">
-
     <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header">
@@ -28,11 +28,6 @@
             </div>
             <div class="card-body">
                 <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">Названия</th>
-                    </tr>
-                    </thead>
                     <tbody>
                     <c:forEach items="${candidates}" var="candidate">
                         <tr>
@@ -42,6 +37,15 @@
                                 </a>
                                 <c:out value="${candidate.name}"/>
                             </td>
+                            <td>
+                                <img src="<c:url value='/download?id=${candidate.id}'/>" width="100px" height="100px"/>
+                            </td>
+                            <td>
+                                <a href="<c:url value='/upload?id=${candidate.id}'/>">
+                                        <i class="fa fa-camera"></i>
+                                   </a>
+                            </td>
+                            <td><a href="<c:url value='/delete?id=${candidate.id}'/>">Удалить</a></td>
                         </tr>
                     </c:forEach>
                     </tbody>
