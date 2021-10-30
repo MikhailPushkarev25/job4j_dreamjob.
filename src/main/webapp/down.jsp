@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8" session="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <%@ page import="ru.job4j.dream.model.Candidate" %>
-<%@ page import="ru.job4j.dream.store.Store" %>
+<%@ page import="ru.job4j.dream.store.MemStore" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +19,7 @@
     String id = request.getParameter("id");
     Candidate candidate = new Candidate(0, "");
     if (id != null) {
-        candidate = Store.instOf().findByIdCandidate(Integer.valueOf(id));
+        candidate = MemStore.instOf().findByIdCandidate(Integer.valueOf(id));
     }
 %>
 <body>

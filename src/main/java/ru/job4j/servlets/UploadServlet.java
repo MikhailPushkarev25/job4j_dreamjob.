@@ -4,7 +4,6 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import ru.job4j.dream.store.Store;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -17,7 +16,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class UploadServlet extends HttpServlet {
 
