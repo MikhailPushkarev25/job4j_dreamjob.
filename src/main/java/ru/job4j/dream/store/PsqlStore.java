@@ -2,6 +2,8 @@ package ru.job4j.dream.store;
 
 import ru.job4j.dream.model.Candidate;
 import ru.job4j.dream.model.Post;
+import ru.job4j.dream.model.User;
+
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -19,6 +21,8 @@ public class PsqlStore {
 
     private final Map<Integer, Candidate> candidates = new ConcurrentHashMap<>();
 
+    private final Map<Integer, User> users = new ConcurrentHashMap<>();
+
     private PsqlStore() {
         posts.put(1, new Post(1, "Junior Java Job"));
         posts.put(2, new Post(2, "Middle Java Job"));
@@ -26,7 +30,9 @@ public class PsqlStore {
         candidates.put(1, new Candidate(1, "Junior Java"));
         candidates.put(2, new Candidate(2, "Middle Java"));
         candidates.put(3, new Candidate(3, "Senior Java"));
-
+        users.put(1, new User(1, "Mikhail", "t@mail", "123"));
+        users.put(2, new User(2, "Roman", "e@mail", "1234"));
+        users.put(3, new User(3, "Elena", "l@mail", "12345"));
     }
     public void savePost(Post post) {
         if (post.getId() == 0) {
@@ -65,5 +71,14 @@ public class PsqlStore {
 
     public void delete(int id) {
         candidates.remove(id);
+    }
+
+    public User findByEmail(String email) {
+        for (User user : users.values()) {
+            if (user.getEmail().equals(email)) {
+                return user;
+            }
+        }
+        return null;
     }
 }
