@@ -22,4 +22,6 @@ public interface Store {
     void removeCandidate(int id);
 
     void removePost(int id);
+
+    void clear();
 }

@@ -9,14 +9,13 @@ import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
 
 public class DbStore implements Store {
-
-    private static final DbStore instance = new DbStore();
 
     private final BasicDataSource pool = new BasicDataSource();
 
@@ -215,6 +214,18 @@ public class DbStore implements Store {
              PreparedStatement ps = cn.prepareStatement("DELETE FROM post WHERE post.id = (?)")) {
             ps.setInt(1, id);
             ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void clear() {
+        try (Connection cn = pool.getConnection();
+             Statement statement = cn.createStatement()) {
+            for (String table : List.of("post", "candidate")) {
+                statement.executeUpdate(table);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
