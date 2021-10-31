@@ -37,6 +37,15 @@
     <servlet-class>ru.job4j.dream.servlet.LogoutServlet</servlet-class>
   </servlet>
 
+  <filter>
+    <filter-name>AuthServlet</filter-name>
+    <filter-class>ru.job4j.dream.filter.AuthFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AuthServlet</filter-name>
+    <url-pattern>*.do</url-pattern>
+  </filter-mapping>
+
   <servlet-mapping>
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/logout.do</url-pattern>
