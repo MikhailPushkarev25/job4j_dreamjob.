@@ -263,11 +263,12 @@ public class DbStore implements Store {
 
     @Override
     public User findByEmailUser(String email) {
+        User user = null;
         try (Connection cn = pool.getConnection();
-             PreparedStatement ps = cn.prepareStatement("SELECT * FROM users WHERE email = ?")) {
+             PreparedStatement ps = cn.prepareStatement("SELECT * FROM users WHERE email = (?)")) {
             try (ResultSet it = ps.executeQuery()) {
                 if (it.next()) {
-                    return new User(
+                    user = new User(
                             it.getInt("id"),
                             it.getString("name"),
                             it.getString("email"),
@@ -278,7 +279,7 @@ public class DbStore implements Store {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return user;
     }
 
     @Override

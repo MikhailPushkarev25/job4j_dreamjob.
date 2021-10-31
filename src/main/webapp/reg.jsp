@@ -1,5 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html; charset=UTF-8" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -23,66 +23,40 @@
 <div class="container pt-3">
 
     <div class="row">
-        <ul class="nav">
+        <%--<ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath()%>/posts.do">Вакансии</a>
+                <a class="nav-link" href="<%=request.getContextPath()%>/reg.do">Регистрация</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath()%>/candidates.do">Кандидаты</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath()%>/post/edit.jsp">Добавить вакансию</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath()%>/candidate/edit.jsp">Добавить кандидата</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath()%>/reg.jsp">Регистрация</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath()%>/login.jsp">
-                    <c:if test="${user == null}">
-                        <c:out value="Войти"/>
-                    </c:if>
-                    <c:if test="${user != null}">
-                        <c:out value="${user.name}"/> | Выйти
-                    </c:if>
-                </a>
-            </li>
-            <c:if test="${user != null}">
-                <li class="nav-item">
-                    <a class="nav-link" href="<%=request.getContextPath()%>/logout.do">Выйти</a>
-                </li>
-            </c:if>
-        </ul>
-    </div>
+        </ul>--%>
         <div class="card" style="width: 100%">
             <div class="card-header">
-                Авторизация
+                Регистрация
             </div>
+
             <div class="card-body">
-                <form action="<%=request.getContextPath()%>/auth.do" method="post">
+                <form action="<%=request.getContextPath()%>/reg.do" method="post">
+                    <div class="form-group">
+                        <label>Имя</label>
+                        <input type="text" class="form-control" name="name">
+                    </div>
                     <div class="form-group">
                         <label>Почта</label>
                         <input type="text" class="form-control" name="email">
                     </div>
                     <div class="form-group">
                         <label>Пароль</label>
-                        <input type="password" class="form-control" name="password">
+                        <input type="text" class="form-control" name="password">
                     </div>
                     <button type="submit" class="btn btn-primary">Войти</button>
-                    <c:if test="${requestScope.error != null}">
+                    <c:if test="${not empty error}">
                         <div style="color:red; font-weight: bold; margin: 30px 0;">
-                                ${requestScope.error}
+                            <c:out value="${error}"/>
                         </div>
                     </c:if>
                 </form>
-                <br>
-                <a href="<%=request.getContextPath()%>/reg.jsp" class="btn btn-success" role="button">
-                    Регистрация
-                </a>
             </div>
         </div>
+    </div>
 </div>
 </body>
 </html>
