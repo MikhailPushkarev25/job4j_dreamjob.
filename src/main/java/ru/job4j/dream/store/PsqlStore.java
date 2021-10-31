@@ -7,19 +7,19 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class MemStore {
+public class PsqlStore {
 
     private static final AtomicInteger POST_ID = new AtomicInteger(4);
 
     private static final AtomicInteger CANDIDATE_ID = new AtomicInteger(4);
 
-    private static final MemStore INST = new MemStore();
+    private static final PsqlStore INST = new PsqlStore();
 
     private final Map<Integer, Post> posts = new ConcurrentHashMap<>();
 
     private final Map<Integer, Candidate> candidates = new ConcurrentHashMap<>();
 
-    private MemStore() {
+    private PsqlStore() {
         posts.put(1, new Post(1, "Junior Java Job"));
         posts.put(2, new Post(2, "Middle Java Job"));
         posts.put(3, new Post(3, "Senior Java Job"));
@@ -51,7 +51,7 @@ public class MemStore {
     }
 
 
-    public static MemStore instOf() {
+    public static PsqlStore instOf() {
         return INST;
     }
 

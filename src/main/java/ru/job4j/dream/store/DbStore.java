@@ -126,12 +126,9 @@ public class DbStore implements Store {
              PreparedStatement ps = cn.prepareStatement("UPDATE candidate SET name = ? WHERE id = (?)",
                      PreparedStatement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, candidate.getName());
-            ps.execute();
-            try (ResultSet id = ps.getGeneratedKeys()) {
-                if (id.next()) {
-                    candidate.setId(id.getInt(1));
-                }
-            }
+            ps.setInt(2, candidate.getId());
+            ps.executeUpdate();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -159,12 +156,9 @@ public class DbStore implements Store {
              PreparedStatement ps = cn.prepareStatement("UPDATE post SET name = (?) WHERE id = (?)",
                      PreparedStatement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, post.getName());
-            ps.execute();
-            try (ResultSet id = ps.getGeneratedKeys()) {
-                if (id.next()) {
-                    post.setId(id.getInt(1));
-                }
-            }
+            ps.setInt(2, post.getId());
+            ps.executeUpdate();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -172,33 +166,57 @@ public class DbStore implements Store {
 
     @Override
     public Post findByIdPost(int id) {
+        Post post = null;
         try (Connection cn = pool.getConnection();
              PreparedStatement ps = cn.prepareStatement("SELECT * FROM post WHERE id = ?")) {
             ps.setInt(1, id);
             try (ResultSet it = ps.executeQuery()) {
                 if (it.next()) {
-                    return new Post(it.getInt("id"), it.getString("name"));
+                    post = new Post(it.getInt("id"), it.getString("name"));
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return post;
     }
 
     @Override
     public Candidate findByIdCandidate(int id) {
+        Candidate candidate = null;
         try (Connection cn = pool.getConnection();
              PreparedStatement ps = cn.prepareStatement("SELECT * FROM candidate WHERE id = ?")) {
             ps.setInt(1, id);
             try (ResultSet it = ps.executeQuery()) {
                 if (it.next()) {
-                    return new Candidate(it.getInt("id"), it.getString("name"));
+                    candidate = new Candidate(it.getInt("id"), it.getString("name"));
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return candidate;
+    }
+
+    @Override
+    public void removeCandidate(int id) {
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement("DELETE FROM candidate WHERE candidate.id = (?)")) {
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void removePost(int id) {
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement("DELETE FROM post WHERE post.id = (?)")) {
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
