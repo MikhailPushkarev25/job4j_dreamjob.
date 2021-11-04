@@ -1,0 +1,159 @@
+2021-10-31 13:01:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "POST" не найдена
+Table "POST" not found; SQL statement:
+INSERT INTO post(name) VALUES (?) [42102-200]
+2021-10-31 13:01:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "POST" не найдена
+Table "POST" not found; SQL statement:
+SELECT * FROM post WHERE id = ? [42102-200]
+2021-10-31 13:02:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "DATABASECHANGELOGLOCK" не найдена
+Table "DATABASECHANGELOGLOCK" not found; SQL statement:
+SELECT COUNT(*) FROM DATABASECHANGELOGLOCK [42102-200]
+2021-10-31 13:20:57 database: wrong user or password; user: "POSTGRES"
+org.h2.message.DbException: Неверное имя пользователя или пароль
+Wrong user name or password [28000-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.engine.Engine.openSession(Engine.java:131)
+	at org.h2.engine.Engine.openSession(Engine.java:192)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:171)
+	at org.h2.engine.Engine.createSession(Engine.java:166)
+	at org.h2.engine.Engine.createSession(Engine.java:29)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:340)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:173)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at liquibase.database.DatabaseFactory.openConnection(DatabaseFactory.java:246)
+	at liquibase.database.DatabaseFactory.openDatabase(DatabaseFactory.java:149)
+	at liquibase.integration.commandline.CommandLineUtils.createDatabaseObject(CommandLineUtils.java:97)
+	at liquibase.integration.commandline.CommandLineUtils.createDatabaseObject(CommandLineUtils.java:67)
+	at org.liquibase.maven.plugins.AbstractLiquibaseMojo.execute(AbstractLiquibaseMojo.java:316)
+	at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo(DefaultBuildPluginManager.java:137)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:210)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:156)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:148)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:117)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:81)
+	at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build(SingleThreadedBuilder.java:56)
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:128)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:305)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:192)
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:105)
+	at org.apache.maven.cli.MavenCli.execute(MavenCli.java:957)
+	at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:289)
+	at org.apache.maven.cli.MavenCli.main(MavenCli.java:193)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:282)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:225)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:406)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:347)
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Неверное имя пользователя или пароль
+Wrong user name or password [28000-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:461)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 39 more
+2021-10-31 13:47:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "POST[*]"; ожидалось "PREPARE"
+Syntax error in SQL statement "POST[*]"; expected "PREPARE"; SQL statement:
+post [42001-200]
+2021-10-31 13:48:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "POST[*]"; ожидалось "PREPARE"
+Syntax error in SQL statement "POST[*]"; expected "PREPARE"; SQL statement:
+post [42001-200]
+2021-10-31 13:54:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "POST[*]"; ожидалось "PREPARE"
+Syntax error in SQL statement "POST[*]"; expected "PREPARE"; SQL statement:
+post [42001-200]
+2021-10-31 13:59:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "POST[*]"; ожидалось "PREPARE"
+Syntax error in SQL statement "POST[*]"; expected "PREPARE"; SQL statement:
+post [42001-200]
+2021-10-31 14:00:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "POST[*]"; ожидалось "PREPARE"
+Syntax error in SQL statement "POST[*]"; expected "PREPARE"; SQL statement:
+post [42001-200]
+2021-10-31 14:00:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "POST[*]"; ожидалось "PREPARE"
+Syntax error in SQL statement "POST[*]"; expected "PREPARE"; SQL statement:
+post [42001-200]
+2021-10-31 14:01:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "POST[*]"; ожидалось "PREPARE"
+Syntax error in SQL statement "POST[*]"; expected "PREPARE"; SQL statement:
+post [42001-200]
+2021-10-31 14:01:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "POST[*]"; ожидалось "PREPARE"
+Syntax error in SQL statement "POST[*]"; expected "PREPARE"; SQL statement:
+post [42001-200]
+2021-10-31 14:02:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "POST[*]"; ожидалось "PREPARE"
+Syntax error in SQL statement "POST[*]"; expected "PREPARE"; SQL statement:
+post [42001-200]
+2021-10-31 14:04:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "POST[*]"; ожидалось "PREPARE"
+Syntax error in SQL statement "POST[*]"; expected "PREPARE"; SQL statement:
+post [42001-200]
+2021-10-31 14:04:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "POST[*]"; ожидалось "PREPARE"
+Syntax error in SQL statement "POST[*]"; expected "PREPARE"; SQL statement:
+post [42001-200]
+2021-10-31 14:05:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "POST[*]"; ожидалось "PREPARE"
+Syntax error in SQL statement "POST[*]"; expected "PREPARE"; SQL statement:
+post [42001-200]
+2021-10-31 14:05:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "POST[*]"; ожидалось "PREPARE"
+Syntax error in SQL statement "POST[*]"; expected "PREPARE"; SQL statement:
+post [42001-200]
+2021-10-31 14:06:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "POST[*]"; ожидалось "PREPARE"
+Syntax error in SQL statement "POST[*]"; expected "PREPARE"; SQL statement:
+post [42001-200]
+2021-10-31 14:08:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "POST[*]"; ожидалось "PREPARE"
+Syntax error in SQL statement "POST[*]"; expected "PREPARE"; SQL statement:
+post [42001-200]
+2021-10-31 14:08:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "POST[*]"; ожидалось "PREPARE"
+Syntax error in SQL statement "POST[*]"; expected "PREPARE"; SQL statement:
+post [42001-200]
+2021-10-31 14:11:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "POST[*]"; ожидалось "PREPARE"
+Syntax error in SQL statement "POST[*]"; expected "PREPARE"; SQL statement:
+post [42001-200]
+2021-10-31 14:15:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "POST[*]"; ожидалось "PREPARE"
+Syntax error in SQL statement "POST[*]"; expected "PREPARE"; SQL statement:
+post [42001-200]
+2021-10-31 14:15:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "POST[*]"; ожидалось "PREPARE"
+Syntax error in SQL statement "POST[*]"; expected "PREPARE"; SQL statement:
+post [42001-200]
+2021-10-31 14:15:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "POST[*]"; ожидалось "PREPARE"
+Syntax error in SQL statement "POST[*]"; expected "PREPARE"; SQL statement:
+post [42001-200]
+2021-10-31 14:15:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "POST[*]"; ожидалось "PREPARE"
+Syntax error in SQL statement "POST[*]"; expected "PREPARE"; SQL statement:
+post [42001-200]
+2021-10-31 14:17:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "POST[*]"; ожидалось "PREPARE"
+Syntax error in SQL statement "POST[*]"; expected "PREPARE"; SQL statement:
+post [42001-200]
+2021-10-31 14:20:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "POST[*]"; ожидалось "PREPARE"
+Syntax error in SQL statement "POST[*]"; expected "PREPARE"; SQL statement:
+post [42001-200]
+2021-10-31 14:57:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "POST[*]"; ожидалось "PREPARE"
+Syntax error in SQL statement "POST[*]"; expected "PREPARE"; SQL statement:
+post [42001-200]
+2021-10-31 15:18:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "POST[*]"; ожидалось "PREPARE"
+Syntax error in SQL statement "POST[*]"; expected "PREPARE"; SQL statement:
+post [42001-200]
