@@ -20,6 +20,21 @@
     <title>Работа мечты</title>
 </head>
 <body>
+<script>
+    function validate() {
+        if ($('#name').val() === '') {
+            alert($('#name').attr('title'));
+
+        } else if ($('#email').val() === '') {
+            alert($('#email').attr('title'));
+
+        } else if ($('#password').val() === '') {
+        alert($('#password').attr('title'));
+    }
+
+        return false;
+    }
+</script>
 <div class="container pt-3">
 
     <div class="row">
@@ -37,15 +52,15 @@
                 <form action="<%=request.getContextPath()%>/reg.do" method="post">
                     <div class="form-group">
                         <label>Имя</label>
-                        <input type="text" class="form-control" name="name">
+                        <input type="text" class="form-control" name="name" id="name">
                     </div>
                     <div class="form-group">
                         <label>Почта</label>
-                        <input type="text" class="form-control" name="email">
+                        <input type="text" class="form-control" name="email" id="email">
                     </div>
                     <div class="form-group">
                         <label>Пароль</label>
-                        <input type="text" class="form-control" name="password">
+                        <input type="text" class="form-control" name="password" id="password">
                     </div>
                     <button type="submit" class="btn btn-primary">Войти</button>
                     <c:if test="${not empty error}">

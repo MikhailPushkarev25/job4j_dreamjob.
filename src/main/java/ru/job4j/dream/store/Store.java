@@ -1,9 +1,11 @@
 package ru.job4j.dream.store;
 
 import ru.job4j.dream.model.Candidate;
+import ru.job4j.dream.model.City;
 import ru.job4j.dream.model.Post;
 import ru.job4j.dream.model.User;
 
+import java.sql.SQLException;
 import java.util.Collection;
 
 public interface Store {
@@ -13,6 +15,8 @@ public interface Store {
     Collection<Candidate> findAllCandidates();
 
     Collection<User> findAllUsers();
+
+    Collection<City> findAllCites();
 
     void savePost(Post post);
 
@@ -27,6 +31,12 @@ public interface Store {
     User findByEmailUser(String email);
 
     Candidate findByIdCandidate(int id);
+
+    public Collection<Candidate> findLastDayCandidate();
+
+    public Collection<Post> findLastDayPost();
+
+    City findByIdCity(int id);
 
     void removeCandidate(int id);
 

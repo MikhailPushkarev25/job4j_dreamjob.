@@ -1,6 +1,7 @@
 package ru.job4j.dream.store;
 
 import ru.job4j.dream.model.Candidate;
+import ru.job4j.dream.model.City;
 import ru.job4j.dream.model.Post;
 import ru.job4j.dream.model.User;
 
@@ -19,10 +20,9 @@ public class MainStore {
 //            System.out.println(candidate.getId() + " " + candidate.getName());
 //        }
 
-        store.saveUsers(new User(0, "Java Job", "we@mail.ru", "123"));
-           for (User user : store.findAllUsers()) {
-               System.out.println(user.getId() + " " + user.getName() + " " + user.getEmail() + " " + user.getPassword());
-           }
+        for (City city : store.findAllCites()) {
+            System.out.println(city.getId() + " " + city.getName());
+        }
 
     }
 }

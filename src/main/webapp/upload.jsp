@@ -11,6 +11,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
+<script>
+    function validate() {
+        if ($('#file').val() === '') {
+            alert($('#file').attr('title'));
+        }
+
+        return false;
+    }
+</script>
 <div class="container">
     <div class="row">
         <ul class="nav">

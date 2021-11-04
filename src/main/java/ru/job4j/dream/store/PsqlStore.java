@@ -1,6 +1,7 @@
 package ru.job4j.dream.store;
 
 import ru.job4j.dream.model.Candidate;
+import ru.job4j.dream.model.City;
 import ru.job4j.dream.model.Post;
 import ru.job4j.dream.model.User;
 
@@ -15,6 +16,8 @@ public class PsqlStore {
 
     private static final AtomicInteger CANDIDATE_ID = new AtomicInteger(4);
 
+    private static final AtomicInteger CITY_ID = new AtomicInteger(4);
+
     private static final PsqlStore INST = new PsqlStore();
 
     private final Map<Integer, Post> posts = new ConcurrentHashMap<>();
@@ -22,6 +25,8 @@ public class PsqlStore {
     private final Map<Integer, Candidate> candidates = new ConcurrentHashMap<>();
 
     private final Map<Integer, User> users = new ConcurrentHashMap<>();
+
+    private final Map<Integer, City> cites = new ConcurrentHashMap<>();
 
     private PsqlStore() {
         posts.put(1, new Post(1, "Junior Java Job"));
@@ -80,5 +85,16 @@ public class PsqlStore {
             }
         }
         return null;
+    }
+
+    public Collection<Post> findLastDayPost() {
+        return posts.values();
+    }
+
+    public Collection<Candidate> findLastDayCandidate() {
+        return candidates.values();
+    }
+    public Collection<City> findAllCity() {
+        return cites.values();
     }
 }

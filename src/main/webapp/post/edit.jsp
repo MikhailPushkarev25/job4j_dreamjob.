@@ -22,6 +22,17 @@
     <title>Работа мечты</title>
 </head>
 <body>
+
+<script>
+    function validate() {
+        if ($('#name').val() === '') {
+            alert('Выведите название текста!');
+            return false;
+        }
+
+        return true;
+    }
+</script>
 <%
     String id = request.getParameter("id");
     Post post = new Post(0, "");
@@ -65,10 +76,10 @@
             <div class="card-body">
                 <form action="<%=request.getContextPath()%>/posts.do?id=<%=post.getId()%>" method="post">
                     <div class="form-group">
-                        <label>Имя</label>
-                        <input type="text" class="form-control" name="name" value="<%=post.getName()%>">
+                        <label for="name">Имя</label>
+                        <input type="text" class="form-control" name="name" value="<%=post.getName()%>" id="name">
                     </div>
-                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                    <button type="submit" class="btn btn-primary" onclick="validate()">Сохранить</button>
                 </form>
             </div>
         </div>

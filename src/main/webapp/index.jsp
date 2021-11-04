@@ -1,6 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="ru.job4j.dream.store.PsqlStore" %>
 <%@ page import="ru.job4j.dream.model.Post" %>
+<%@ page import="ru.job4j.dream.model.Candidate" %>
+<%@ page import="java.util.List" %>
+<%@ page import="ru.job4j.dream.store.DbStore" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="ru.job4j.dream.model.City" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -17,8 +22,10 @@
             integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-    <title>Работа мечты</title>
+    <%List<Candidate> candidates = (List<Candidate>) DbStore.instOf().findLastDayCandidate();%>
+    <%List<Post> posts = (List<Post>) DbStore.instOf().findLastDayPost();%>
+    <%List<City> cities = (List<City>) DbStore.instOf().findAllCites();%>
+     <title>Работа мечты</title>
 </head>
 <body>
 <div class="container">
@@ -47,6 +54,26 @@
                 Сегодняшние вакансии.
             </div>
             <div class="card-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Название</th>
+                        <th scope="col">Дата создания</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% for (Post post : posts) { %>
+                    <tr>
+                        <td>
+                            <%=post.getName()%>
+                        </td>
+                        <td>
+                            <%=post.getCreated()%>
+                        </td>
+                    </tr>
+                    <% } %>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -56,6 +83,30 @@
                 Сегодняшние кандидаты.
             </div>
             <div class="card-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Имя</th>
+                        <th scope="col">Город</th>
+                        <th scope="col">Дата создания</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% for (Candidate can : candidates) { %>
+                    <tr>
+                        <td>
+                            <%=can.getName()%>
+                        </td>
+                        <td>
+                            <%=cities.get(can.getCityid() - 1).getName()%>
+                        </td>
+                        <td>
+                            <%=can.getRegistered()%>
+                        </td>
+                    </tr>
+                    <% } %>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

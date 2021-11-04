@@ -24,6 +24,15 @@
     }
 %>
 <body>
+<script>
+    function validate() {
+        if ($('#file').val() === '') {
+            alert($('#file').attr('title'));
+        }
+
+        return false;
+    }
+</script>
     <div class="container">
         <div class="row">
             <ul class="nav">
